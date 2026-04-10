@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+// File: src/App.js
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import initialEvents from "./data/events.json";
+import EventListPage from "./pages/EventListPage";
+import EventDetailPage from "./pages/EventDetailPage";
+import EventCreatePage from "./pages/EventCreatePage";
 
 function App() {
+  const [events, setEvents] = useState(initialEvents);
+
+  const addEvent = (newEvent) => {
+    setEvents((prev) => [
+      ...prev,
+      { ...newEvent, id: prev.length + 1, participants: 0 },
+    ]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<EventListPage events={events} />} />
+        <Route
+          path="/event/:id"
+          element={<EventDetailPage events={events} />}
+        />
+        <Route path="/create" element={<EventCreatePage onAdd={addEvent} />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
