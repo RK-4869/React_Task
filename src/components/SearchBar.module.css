@@ -1,0 +1,20 @@
+/* File: src/components/SearchBar.module.css */
+.wrapper {
+  width: 100%;
+  max-width: 500px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 2px solid #cbd5e0;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: #2b6cb0;
+}

@@ -1,0 +1,26 @@
+/* File: src/components/CategoryFilter.module.css */
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.button {
+  padding: 8px 18px;
+  border: 2px solid #2b6cb0;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #2b6cb0;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.button:hover {
+  background-color: #ebf8ff;
+}
+
+.active {
+  background-color: #2b6cb0;
+  color: #fff;
+}

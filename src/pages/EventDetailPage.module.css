@@ -1,0 +1,151 @@
+/* File: src/pages/EventDetailPage.module.css */
+.main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+.backLink {
+  display: inline-block;
+  color: #2b6cb0;
+  text-decoration: none;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 28px;
+}
+
+.top {
+  margin-bottom: 12px;
+}
+
+.badge {
+  color: #fff;
+  padding: 5px 14px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 1.6rem;
+  color: #1a202c;
+  margin: 0 0 20px 0;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.infoLabel {
+  font-size: 0.85rem;
+  color: #718096;
+}
+
+.infoValue {
+  font-size: 1rem;
+  color: #1a202c;
+  font-weight: 500;
+}
+
+.descriptionSection {
+  margin-bottom: 28px;
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  color: #2d3748;
+  margin: 0 0 10px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.description {
+  font-size: 1rem;
+  color: #4a5568;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.joinSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f7fafc;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.participantInfo {
+  font-size: 1rem;
+  color: #2d3748;
+}
+
+.joinButton {
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #2b6cb0;
+  color: #fff;
+  transition: background-color 0.2s;
+}
+
+.joinButton:hover {
+  background-color: #2c5282;
+}
+
+.joinButton:disabled {
+  cursor: default;
+}
+
+.joined {
+  background-color: #38a169;
+}
+
+.joined:hover {
+  background-color: #38a169;
+}
+
+.notFound {
+  text-align: center;
+  color: #718096;
+  font-size: 1.1rem;
+  margin-top: 40px;
+}
+
+@media (max-width: 600px) {
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .joinSection {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+}
