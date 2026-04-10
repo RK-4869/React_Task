@@ -1,70 +1,158 @@
-# Getting Started with Create React App
+<!-- File: README.md -->
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🏘️ まちイベ — 地域コミュニティイベント管理アプリ
 
-## Available Scripts
+## 概要
 
-In the project directory, you can run:
+地域住民が気軽にイベント情報を閲覧・作成・参加できるWebアプリケーションです。
 
-### `npm start`
+近年、地域住民同士のつながりが希薄化する中で、
+「もっと気軽にイベント情報を知りたい」「多様な世代が交流できる場が欲しい」
+「自分のスキルや経験を地域で活かしたい」という声に応え、
+**シンプルで誰でも迷わず使えるUI** を目指して設計・実装しました。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## セットアップ手順
 
-### `npm test`
+### 前提条件
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js v18以上
+- npm v9以上
 
-### `npm run build`
+### インストール・起動
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone https://github.com/RK-4869/React_Task.git
+cd React_Task/community-event-app
+npm install
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ブラウザで http://localhost:3000 を開いてください。
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 使用技術・ライブラリ
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+| 技術             | バージョン | 用途                             |
+| ---------------- | ---------- | -------------------------------- |
+| React            | 18.x       | UIライブラリ                     |
+| react-router-dom | 6.x        | ページルーティング（SPA遷移）    |
+| CSS Modules      | —          | コンポーネント単位のスタイリング |
+| Create React App | 5.x        | プロジェクト生成・ビルド環境     |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+> バックエンドは使用せず、モックデータ（`src/data/events.json`）でイベント情報を管理しています。
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 実装機能
 
-## Learn More
+### 1. イベント一覧ページ（トップページ）
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- モックデータからイベントをカード形式で一覧表示
+- **キーワード検索**：タイトル・説明文を部分一致でリアルタイムにフィルタ
+- **カテゴリフィルタ**：「すべて / お祭り / ワークショップ / スポーツ / その他」のボタンで絞り込み
+- 検索結果が0件の場合、案内メッセージを表示
+- カードクリックで詳細ページへ遷移
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 2. イベント詳細ページ
 
-### Code Splitting
+- イベントの全情報を表示（タイトル・日時・場所・主催者・説明）
+- カテゴリごとに色分けしたバッジで視認性を向上
+- **「参加する」ボタン**：クリックで参加者数が+1、ボタンが「参加済み」に変化（二重参加防止）
+- 「← イベント一覧に戻る」リンクで一覧へ遷移
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 3. イベント作成ページ
 
-### Analyzing the Bundle Size
+- フォーム入力（イベント名・日付・時間・場所・カテゴリ・主催者・説明）
+- **バリデーション**：必須項目が未入力の場合、各項目ごとにエラーメッセージを赤字で表示
+- 作成完了後、「🎉 イベントを作成しました！」メッセージを表示し、2秒後に一覧へ自動遷移
+- 作成したイベントが一覧ページに即時反映
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 4. 共通機能
 
-### Making a Progressive Web App
+- **レスポンシブ対応**：PC・タブレット・スマートフォンで快適に閲覧・操作可能
+- **ヘッダーナビゲーション**：「イベント一覧」「+ イベントを作成」への導線を常に表示
+- **ステート管理**：`App.js` でイベントデータを `useState` で一元管理し、各ページに `props` で受け渡し
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## 動作確認方法
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+| #   | 操作                                             | 期待される結果                                                         |
+| --- | ------------------------------------------------ | ---------------------------------------------------------------------- |
+| 1   | トップページ（`/`）を開く                        | イベントカードが6件表示される                                          |
+| 2   | 検索バーに「ヨガ」と入力                         | 「朝ヨガ in 河川敷」のカードのみ表示される                             |
+| 3   | カテゴリ「お祭り」をクリック                     | お祭りカテゴリのカードのみ表示される                                   |
+| 4   | 存在しないキーワード（例：「あいうえお」）で検索 | 「該当するイベントが見つかりませんでした」が表示される                 |
+| 5   | イベントカードをクリック                         | 詳細ページに遷移し、全情報が表示される                                 |
+| 6   | 「🙋 参加する」ボタンをクリック                  | 参加者数が+1され、ボタンが「✅ 参加済み」に変化する                    |
+| 7   | 「← イベント一覧に戻る」をクリック               | 一覧ページに戻る                                                       |
+| 8   | ヘッダーの「+ イベントを作成」をクリック         | 作成フォームが表示される                                               |
+| 9   | 何も入力せずに送信ボタンを押す                   | 各項目にバリデーションエラーが赤字で表示される                         |
+| 10  | 全項目を入力して送信                             | 完了メッセージ表示 → 2秒後に一覧に戻り、新しいイベントが追加されている |
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## フォルダ構成
 
-### `npm run build` fails to minify
+```
+src/
+├── components/          # 再利用可能なUIコンポーネント
+│   ├── Header.jsx / Header.module.css
+│   ├── SearchBar.jsx / SearchBar.module.css
+│   ├── CategoryFilter.jsx / CategoryFilter.module.css
+│   └── EventCard.jsx / EventCard.module.css
+├── pages/               # 各ページコンポーネント
+│   ├── EventListPage.jsx / EventListPage.module.css
+│   ├── EventDetailPage.jsx / EventDetailPage.module.css
+│   └── EventCreatePage.jsx / EventCreatePage.module.css
+├── data/                # モックデータ
+│   └── events.json
+├── App.js               # ルーティング・ステート管理
+├── index.js             # エントリーポイント
+└── index.css            # グローバルスタイル
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## 顧客視点の工夫
+
+| 観点                 | 具体的な工夫                                                         |
+| -------------------- | -------------------------------------------------------------------- |
+| **見やすさ**         | フォントサイズ16px以上、十分なコントラスト比で年配の方にも配慮       |
+| **迷わない操作**     | ボタン・リンクにアクション名を明記（「参加する」「一覧に戻る」等）   |
+| **情報の優先順位**   | カードにはタイトル → 日時 → 場所の順で重要情報を上から配置           |
+| **カテゴリの視認性** | カテゴリごとに色分けしたバッジで一目で判別可能                       |
+| **空状態への配慮**   | 検索結果0件時に案内メッセージを表示し、次の行動を促す                |
+| **モバイル対応**     | レスポンシブデザインでスマートフォンからも快適に利用可能             |
+| **入力ミスの防止**   | フォームに必須項目のバリデーションとプレースホルダー（入力例）を設置 |
+
+---
+
+## 開発を通じての所感
+
+本アプリケーションは、Reactを使ったフロントエンド開発に初めて取り組んだ成果物です。
+
+### 設計で意識したこと
+
+- **顧客視点のUI設計**
+  「地域住民が実際に使う」ことを前提に、年配の方でも迷わず操作できるよう、
+  フォントサイズ・ボタンの大きさ・情報の優先順位を意識しました。
+
+- **コンポーネントの分割**
+  Header、SearchBar、CategoryFilter、EventCard など、
+  役割ごとにコンポーネントを分けることで、コードの見通しと再利用性を確保しました。
+
+- **データの流れの整理**
+  `App.js` でイベントデータを一元管理し、各ページに `props` で渡す構成にしました。
+  イベント作成 → 一覧への即時反映が自然に動くよう、ステートの設計を整理しました。
+
+### 初めてのReact開発で学んだこと
+
+- コンポーネント単位で考えることで、UIの構造が明確になること
+- `useState` によるステート管理と、`props` による親子間のデータ受け渡しの基本
+- `react-router-dom` を使ったページ遷移（`useParams`、`useNavigate`）
+- CSS Modules によるスタイルのスコープ管理
+- エラーメッセージを正確に読み、原因を切り分けて対処するデバッグの進め方
